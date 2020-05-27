@@ -91,45 +91,45 @@ const log = console.log;
 
 //Получить массив имен всех пользователей (поле name).
 
-// const getUserNames = users => users.map(user => user.name);
-// log(getUserNames(users));
+const getUserNames = users => users.map(user => user.name);
+log(getUserNames(users));
 
 //task -2
 
 //Получить массив объектов пользователей по цвету глаз (поле eyeColor).
 
-// const getUsersWithEyeColor = (users, color) =>
-//   users.filter(users => users.eyeColor === color);
+const getUsersWithEyeColor = (users, color) =>
+  users.filter(users => users.eyeColor === color);
 
-// log(getUsersWithEyeColor(users, 'blue'));
+log(getUsersWithEyeColor(users, 'blue'));
 
 //task - 3
 
 // Получить массив имен пользователей по полу (поле gender).
 
-// const getUsersWithEyeColor = (users, gender) =>
-//   users.filter(user => user.gender === gender).map(x => x.name);
+const getUsersWithGender = (users, gender) =>
+  users.filter(user => user.gender === gender).map(x => x.name);
 
-// log(getUsersWithEyeColor(users, 'male'));
+log(getUsersWithGender(users, 'male'));
 
 //task - 4
 
 // Получить массив только неактивных пользователей (поле isActive).
 
-// const getInactiveUsers = users =>
-//   users.filter(users => users.isActive === false);
+const getInactiveUsers = users =>
+  users.filter(users => users.isActive === false);
 
-// log(getInactiveUsers(users));
+log(getInactiveUsers(users));
 
 //task - 5
 
 // Получить пользоваля (не массив) по email (поле email, он уникальный).
 
-// const getUserWithEmail = (users, email) =>
-//   users.find(user => user.email === email);
+const getUserWithEmail = (users, email) =>
+  users.find(user => user.email === email);
 
-// log(getUserWithEmail(users, 'shereeanthony@kog.com')); // {объект пользователя Sheree Anthony}
-// log(getUserWithEmail(users, 'elmahead@omatom.com')); // {объект пользователя Elma Head}
+log(getUserWithEmail(users, 'shereeanthony@kog.com')); // {объект пользователя Sheree Anthony}
+log(getUserWithEmail(users, 'elmahead@omatom.com')); // {объект пользователя Elma Head}
 
 //task - 6
 
@@ -137,29 +137,29 @@ const log = console.log;
 //  попадающих в возрастную категорию
 //  от min до max лет (поле age).
 
-// const getUsersWithAge = (users, min, max) =>
-//   users.filter(user => user.age > min && user.age < max);
+const getUsersWithAge = (users, min, max) =>
+  users.filter(user => user.age > min && user.age < max);
 
-// log(getUsersWithAge(users, 20, 30));
-// log(getUsersWithAge(users, 30, 40));
+log(getUsersWithAge(users, 20, 30));
+log(getUsersWithAge(users, 30, 40));
 
 // task-7
 
-// const calculateTotalBalance = users =>
-//   users.reduce((sum, user) => sum + user.balance, 0);
+const calculateTotalBalance = users =>
+  users.reduce((sum, user) => sum + user.balance, 0);
 
-// log(calculateTotalBalance(users));
+log(calculateTotalBalance(users));
 
 // task - 8
 
 // Массив имен всех пользователей у которых есть друг
 //  с указанным именем.
 
-// const getUsersWithFriend = (users, friendName) =>
-//   users.filter(user => user.friends.includes(friendName));
+const getUsersWithFriend = (users, friendName) =>
+  users.filter(user => user.friends.includes(friendName));
 
-// log(getUsersWithFriend(users, 'Briana Decker'));
-// log(getUsersWithFriend(users, 'Goldie Gentry'));
+log(getUsersWithFriend(users, 'Briana Decker'));
+log(getUsersWithFriend(users, 'Goldie Gentry'));
 
 //task - 9
 
@@ -167,14 +167,14 @@ const log = console.log;
 //  отсортированных в зависимости
 //  от количества их друзей (поле friends)
 
-// const getNamesSortedByFriendsCount = users =>
-//   users
-//     .sort(function (a, b) {
-//       return a.friends.length - b.friends.length;
-//     })
-//     .map(user => user.name);
+const getNamesSortedByFriendsCount = users =>
+  users
+    .sort(function (a, b) {
+      return a.friends.length - b.friends.length;
+    })
+    .map(user => user.name);
 
-// console.log(getNamesSortedByFriendsCount(users));
+console.log(getNamesSortedByFriendsCount(users));
 
 // task - 10
 
@@ -183,4 +183,13 @@ const log = console.log;
 //  при этом не должно быть повторяющихся умений
 //  и они должны быть отсортированы в алфавитном порядке
 
-// skills > без повторений > в новом массиве > в алфавитном порядке
+const getSortedUniqueSkills = users =>
+  users
+    .reduce((allSkills, user) => {
+      allSkills.push(...user.skills);
+      let uniqueSkills = [...new Set(allSkills)];
+      return uniqueSkills;
+    }, [])
+    .sort();
+
+log(getSortedUniqueSkills(users));
