@@ -156,7 +156,7 @@ log(calculateTotalBalance(users));
 //  с указанным именем.
 
 const getUsersWithFriend = (users, friendName) =>
-  users.filter(user => user.friends.includes(friendName));
+  users.filter(user => user.friends.includes(friendName)).map(x => x.name);
 
 log(getUsersWithFriend(users, 'Briana Decker'));
 log(getUsersWithFriend(users, 'Goldie Gentry'));
